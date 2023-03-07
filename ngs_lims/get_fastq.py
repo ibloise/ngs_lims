@@ -16,7 +16,8 @@ from constants import constants
 
 def arg_parser():
     parser = argparse.ArgumentParser(description="Herramienta temporal de obtención de archivos fastq del data lake")
-    parser.add_argument('--sample', help = 'Se obtienen las secuencias con el número de muestre indicado. Pueden indicarse varias, separadas por , sin espacio.')
+    parser.add_argument('--sample', help = 'Se obtienen las secuencias con el número de muestre indicado. Pueden indicarse varias, separadas por , sin espacio.',
+                        required=True)
     #parser.add_argument('--csv', help='CSV con lista de muestras')
     parser.add_argument('--copy-files', help= 'Genera una copia del archivo en lugar de un enlace simbólico', action='store_true')
     parser.add_argument('--prefix', help='Prefijo para la carpeta de trabajo', default= '')
@@ -111,8 +112,7 @@ def main():
     datalake_bd = get_table(sql_constants.data_lake_table, engine)
     #sample list
 
-    if args.sample:
-        query = [str(sample).strip() for sample in args.sample.split(',')]
+    query = [str(sample).strip() for sample in args.sample.split(',')]
 
     no_paths = [sample for sample in query if sample not in pd.Series(datalake_bd[sql_constants.sample_col]).to_list()]
     samples = [sample for sample in query if sample not in no_paths]
