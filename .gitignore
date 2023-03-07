@@ -27,3 +27,7 @@ pip-delete-this-directory.txt
 testing.py
 diseño.txt
 testing
+
+#ignore
+
+ignore/
