@@ -5,7 +5,7 @@ setup(
     name = 'NGS_LIMS',
     version = '0.1.0',
     author = 'Iván Bloise Sánchez',
-    description= 'Functions and other tools for Opentrons protocols',
+    description= 'Minimal LIMS for NGS data and files',
     packages=find_packages(),
     entry_points = {
     'console_scripts': [
