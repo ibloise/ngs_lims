@@ -28,6 +28,10 @@ testing.py
 diseño.txt
 testing
 
+#internal paths
+
+paths.py
+
 #ignore
 
 ignore/
